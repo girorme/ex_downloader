@@ -1,5 +1,6 @@
 defmodule ExDownloader.HttpHandler do
   use GenServer
+  alias ExDownloader.Progress
 
   def start_link(_args) do
     GenServer.start_link(__MODULE__, initial_state(), name: __MODULE__)
@@ -29,7 +30,7 @@ defmodule ExDownloader.HttpHandler do
       |> elem(1)
       |> String.to_integer()
 
-    ExDownloader.start_progress(f_size)
+    Progress.start_progress(f_size)
     HTTPoison.stream_next(client)
 
     {:noreply, Map.put(state, :file_size, f_size)}
@@ -38,7 +39,7 @@ defmodule ExDownloader.HttpHandler do
   @impl true
   def handle_info(%HTTPoison.AsyncChunk{chunk: c}, %{poison_client: client, file_size: f_size, downloaded: dowloaded} = state) do
     total_dowloaded = byte_size(c) + dowloaded
-    ExDownloader.update_progress(total_dowloaded, f_size)
+    Progress.update_progress(total_dowloaded, f_size)
     HTTPoison.stream_next(client)
     {:noreply, Map.put(state, :downloaded, total_dowloaded)}
   end
