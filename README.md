@@ -1,21 +1,18 @@
 # ExDownloader
 
-**TODO: Add description**
+Large files download using HTTPoison async/stream features, genserver and progressbar :star:
 
-## Installation
+Usage
+---
+![usage](assets/usage.gif)
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_downloader` to your list of dependencies in `mix.exs`:
+How this works
+---
+- Using :stream_to option from httpoision we can do a async downloads by chunks
+- All the calls to the next chunks are made by our genserver (statefull process)
+- Via chunk calls we can update the progress bar to stdout
 
-```elixir
-def deps do
-  [
-    {:ex_downloader, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ex_downloader>.
-
+Ref
+---
+- https://www.poeticoding.com/download-large-files-with-httpoison-async-requests/
+- 
