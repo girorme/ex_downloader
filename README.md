@@ -15,4 +15,4 @@ How this works
 Ref
 ---
 - https://www.poeticoding.com/download-large-files-with-httpoison-async-requests/
-- 
+- https://hexdocs.pm/httpoison/readme.html
