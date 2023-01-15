@@ -8,9 +8,9 @@ Usage
 
 How this works
 ---
-- Using :stream_to option from httpoision we can do a async downloads by chunks
-- All the calls to the next chunks are made by our genserver (statefull process)
-- Via chunk calls we can update the progress bar to stdout
+- Using :stream_to option from httpoision we can do a async download by chunks
+- All the calls to the next chunks are handled by our genserver (statefull process)
+- To each chunk received we can update our progressbar (directly to stdout)
 
 Ref
 ---
