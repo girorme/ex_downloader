@@ -24,3 +24,5 @@ ex_downloader-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+ex_downloader
