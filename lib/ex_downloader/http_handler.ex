@@ -59,6 +59,7 @@ defmodule ExDownloader.HttpHandler do
   @impl true
   def handle_info(%HTTPoison.AsyncEnd{} = _message, _state) do
     IO.puts ("[+] Download Finished")
+    System.halt(0)
     {:noreply, initial_state()}
   end
 end
